@@ -4,7 +4,7 @@
              x:Class="MauiAppJogoDaVelha.MainPage">
 
     <ContentPage.Background>
-        <LinearGradientBrush StartPoint="0,1" EndPoint ="1,0">
+        <LinearGradientBrush StartPoint="0,1" EndPoint="1,0">
             <GradientStop Color="Grey" Offset="0.3"/>
             <GradientStop Color="Black" Offset="1.1"/>
         </LinearGradientBrush>
@@ -12,50 +12,67 @@
 
     <ContentPage.Resources>
         <Style TargetType="Button">
-            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="BackgroundColor" Value="#2c3e50"/>
             <Setter Property="CornerRadius" Value="15"/>
             <Setter Property="TextColor" Value="White"/>
-            <Setter Property="FontSize" Value="80"/>
-            <Setter Property="BorderWidth" Value="1"/>
+            <Setter Property="FontSize" Value="60"/>
+            <Setter Property="BorderWidth" Value="2"/>
             <Setter Property="BorderColor" Value="White"/>
+            <Setter Property="WidthRequest" Value="100"/>
+            <Setter Property="HeightRequest" Value="100"/>
         </Style>
     </ContentPage.Resources>
 
-    <Grid RowDefinitions="*, *, *, *" 
-        ColumnDefinitions="*, *, *"
-        ColumnSpacing="10"
-        RowSpacing="10"
-        Margin="10"
-        >
-        <Label Grid.Row="0" 
-            Grid.Column="0" 
-            Grid.ColumnSpan="3" 
-            Text="Jogo da Velha" />
+    <VerticalStackLayout Padding="20" Spacing="25" HorizontalOptions="Center">
 
-        <Label  Grid.Row="0" 
-            Grid.Column="1" 
-            Grid.ColumnSpan="3" 
-            x:Name="lblVitoriasX" 
-            Text="0" />
-        <Label  Grid.Row="0" 
-            Grid.Column="2" 
-            Grid.ColumnSpan="3" 
-            x:Name="lblVitoriasO" 
-            Text="0" />
+        <!-- Título -->
+        <Label Text="Jogo da Velha"
+               FontSize="32"
+               TextColor="White"
+               FontAttributes="Bold"
+               HorizontalOptions="Center" />
 
-        <Button x:Name="btn10" Grid.Row="1" Grid.Column="0" Clicked="Button_Clicked"/>
-        <Button x:Name="btn11" Grid.Row="1" Grid.Column="1" Clicked="Button_Clicked"/>   
-        <Button x:Name="btn12" Grid.Row="1" Grid.Column="2" Clicked="Button_Clicked"/>
-        
-        <Button x:Name="btn20" Grid.Row="2" Grid.Column="0" Clicked="Button_Clicked"/>
-        <Button x:Name="btn21" Grid.Row="2" Grid.Column="1" Clicked="Button_Clicked"/>   
-        <Button x:Name="btn22" Grid.Row="2" Grid.Column="2" Clicked="Button_Clicked"/>
+        <!-- Informações de placar -->
+        <HorizontalStackLayout HorizontalOptions="Center" Spacing="10">
+            <Label Text="X:" TextColor="White" FontSize="18"/>
+            <Label x:Name="lblVitoriasX" Text="0" TextColor="White" FontSize="18"/>
 
-        <Button x:Name="btn30" Grid.Row="3" Grid.Column="0" Clicked="Button_Clicked"/>
-        <Button x:Name="btn31" Grid.Row="3" Grid.Column="1" Clicked="Button_Clicked"/>   
-        <Button x:Name="btn32" Grid.Row="3" Grid.Column="2" Clicked="Button_Clicked"/>   
+            <Label Text="O:" TextColor="White" FontSize="18" Margin="20,0,0,0"/>
+            <Label x:Name="lblVitoriasO" Text="0" TextColor="White" FontSize="18"/>
+        </HorizontalStackLayout>
 
+        <!-- Vez do jogador -->
+        <Label x:Name="MostradorDeVez" Text="" TextColor="White" FontSize="20" HorizontalOptions="Center" />
 
-    </Grid>
+        <!-- Grade do Jogo da Velha -->
+        <Grid x:Name="GameGrid"
+              RowSpacing="10"
+              ColumnSpacing="10"
+              HorizontalOptions="Center">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+
+            <!-- Botões -->
+            <Button x:Name="btn10" Grid.Row="0" Grid.Column="0" Clicked="Button_Clicked"/>
+            <Button x:Name="btn11" Grid.Row="0" Grid.Column="1" Clicked="Button_Clicked"/>
+            <Button x:Name="btn12" Grid.Row="0" Grid.Column="2" Clicked="Button_Clicked"/>
+
+            <Button x:Name="btn20" Grid.Row="1" Grid.Column="0" Clicked="Button_Clicked"/>
+            <Button x:Name="btn21" Grid.Row="1" Grid.Column="1" Clicked="Button_Clicked"/>
+            <Button x:Name="btn22" Grid.Row="1" Grid.Column="2" Clicked="Button_Clicked"/>
+
+            <Button x:Name="btn30" Grid.Row="2" Grid.Column="0" Clicked="Button_Clicked"/>
+            <Button x:Name="btn31" Grid.Row="2" Grid.Column="1" Clicked="Button_Clicked"/>
+            <Button x:Name="btn32" Grid.Row="2" Grid.Column="2" Clicked="Button_Clicked"/>
+        </Grid>
+    </VerticalStackLayout>
 
 </ContentPage>

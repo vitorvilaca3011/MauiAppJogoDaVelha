@@ -1,18 +1,17 @@
 ﻿using System.Diagnostics;
-using Windows.Media.Devices;
 
 namespace MauiAppJogoDaVelha
 {
     public partial class MainPage : ContentPage
     {
         string vez = "X";
-        string? ganhador;
         float VitoriasO = 0;
         float VitoriasX = 0;
 
         public MainPage()
         {
             InitializeComponent();
+            Zerar();
         }
 
         private void Button_Clicked(object sender, EventArgs e)
@@ -24,12 +23,14 @@ namespace MauiAppJogoDaVelha
             if(vez == "X")
             {
                 btn.Text = "X";
+                MostradorDeVez.Text = "Vez do O";
                 vez = "O";
                 VerificarVelha();
             }
             else
             {
                 btn.Text = "O";
+                MostradorDeVez.Text = "Vez do X";
                 vez = "X";
                 VerificarVelha();
             }
@@ -75,10 +76,12 @@ namespace MauiAppJogoDaVelha
                 Zerar();
             }
 
-            VerificarVelha();
+            else if(VerificarVelha())
+            {
+                DisplayAlert("Eita", "Deu velha!!", "OK");
+                Zerar();
+            }
  
-
-            
         }
       
         void Zerar()
@@ -115,8 +118,6 @@ namespace MauiAppJogoDaVelha
             btn30.Text = "";
             btn31.Text = "";
             btn32.Text = "";
-
-            ganhador = "";
         }
 
 
